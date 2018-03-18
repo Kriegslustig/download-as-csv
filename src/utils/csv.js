@@ -1,6 +1,6 @@
-export const escapeField = (seperator) => (field) => {
+export const escapeField = (separator) => (field) => {
   if (
-    field.indexOf(seperator) > -1 ||
+    field.indexOf(separator) > -1 ||
     field.indexOf('"') > -1
   ) {
     return `"${field.replace(/"/g, '""')}"`
@@ -33,10 +33,10 @@ export const objectToVector = (renderHeader = true) => (dataArr) => {
   return vec
 }
 
-export const vectorToCsv = (options = { seperator: ',', lineBreak: '\n' }) =>
+export const vectorToCsv = ({ separator = ',', lineBreak = '\n' } = {}) =>
   (vec) =>
     vec.map((line) =>
-      line.map(escapeField(options.seperator))
-        .join(options.seperator)
+      line.map(escapeField(separator))
+        .join(separator)
     )
-      .join(options.lineBreak)
+      .join(lineBreak)

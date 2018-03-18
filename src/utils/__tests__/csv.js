@@ -1,12 +1,12 @@
 import { escapeField, vectorToCsv, objectToVector } from '../csv.js'
 
 describe('escapeField', () => {
-  it('should do nothing if a field does not contain a seperator', () => {
+  it('should do nothing if a field does not contain a separator', () => {
     const result = escapeField(',')('a')
     expect(result).toBe('a')
   })
 
-  it('should wrap the field in double quotes if it contains a seperator', () => {
+  it('should wrap the field in double quotes if it contains a separator', () => {
     const result = escapeField(',')(',')
     expect(result).toBe('","')
   })
@@ -56,8 +56,8 @@ describe('vectorToCsv', () => {
     expect(result).toBe('","')
   })
 
-  it('should use the given seperator', () => {
-    const result = vectorToCsv({ seperator: ';' })([['a', 'b']])
+  it('should use the given separator', () => {
+    const result = vectorToCsv({ separator: ';' })([['a', 'b']])
     expect(result).toBe('a;b')
   })
 
