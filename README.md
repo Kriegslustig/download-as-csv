@@ -34,3 +34,8 @@ The line separator
 Pass it a boolean to enable or disable rendering a header on the first line.
 
 You may pass an array of keys. In that keys it will only take these keys in the given order and print a header.
+
+## TODO
+
+* Windows-1252 encoding
+* autodetect operating system and appropriate encoding
