@@ -27,9 +27,9 @@ describe('createDataUri', () => {
     expect(data).not.toContain('a,b\n')
   })
 
-  it('should use the chosen seperator', () => {
-    const { data } = setup(null, { seperator: ';' })
-    expect(data).toContain('1;2')
+  it('should use the chosen separator', () => {
+    const { data } = setup(null, { separator: ';' })
+    expect(data).toContain('1;c')
   })
 
   it('should use the chosen line breaks', () => {
@@ -37,7 +37,7 @@ describe('createDataUri', () => {
     expect(data).toContain('a,b\r\n')
   })
 
-  it('should wrap fields in double quotes if they contain a seperator', () => {
+  it('should wrap fields in double quotes if they contain a separator', () => {
     const { data } = setup([{ a: ',' }])
     expect(data).toContain('","')
   })
@@ -47,8 +47,13 @@ describe('createDataUri', () => {
     expect(data).toContain('""""')
   })
 
-  it('be able to handle UTF-8 characters', () => {
-    const input = { origin: '🇨🇭', something: '🎀' }
+  it('should be able to handle UTF-8 characters', () => {
+    const input = [{ origin: '🇨🇭', something: '🎀' }]
     const { data } = setup(input)
+  })
+
+  it('should use the specified header keys', () => {
+    const { data } = setup(null, { header: ['a'] })
+    expect(data).toBe('a\n1')
   })
 })
